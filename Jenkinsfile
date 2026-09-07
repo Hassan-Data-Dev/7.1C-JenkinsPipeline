@@ -4,44 +4,44 @@ pipeline {
     stages {
         stage('Stage 1: Build') {
             steps {
-                echo 'Task: Compile and package the code.'
+                echo 'Task: Build the code using a build automation tool to compile and package your code.'
                 echo 'Tool: Maven'
             }
         }
         stage('Stage 2: Unit and Integration Tests') {
             steps {
-                echo 'Task: Run unit tests (code correctness) and integration tests (component interactions).'
-                echo 'Tool: JUnit + Testcontainers'
+                echo 'Task: Run unit tests to ensure the code functions as expected and run integration tests to ensure the different components of the application work together as expected.'
+                echo 'Tool: JUnit (unit tests) / Selenium (integration tests)'
             }
         }
-        stage('Stage 3: Static Code Analysis') {
+        stage('Stage 3: Code Analysis') {
             steps {
-                echo 'Task: Detect bugs, code smells and maintainability issues.'
-                echo 'Tool: SonarQube / SonarCloud'
+                echo 'Task: Analyse the code using a code analysis tool to ensure it meets industry standards.'
+                echo 'Tool: SonarQube'
             }
         }
-        stage('Stage 4: Dependency Security Scan') {
+        stage('Stage 4: Security Scan') {
             steps {
-                echo 'Task: Scan libraries/dependencies for known vulnerabilities (DevSecOps).'
-                echo 'Tool: OWASP Dependency-Check / Snyk'
+                echo 'Task: Perform a security scan on the code to identify any vulnerabilities.'
+                echo 'Tool: OWASP Dependency-Check'
             }
         }
-        stage('Stage 5: Package Artifact') {
+        stage('Stage 5: Deploy to Staging') {
             steps {
-                echo 'Task: Package the validated code into a deployable artifact.'
-                echo 'Tool: Maven package / Docker build'
+                echo 'Task: Deploy the application to a staging server.'
+                echo 'Tool: AWS EC2 instance (via SSH/SCP)'
             }
         }
-        stage('Stage 6: Deploy to Staging') {
+        stage('Stage 6: Integration Tests on Staging') {
             steps {
-                echo 'Task: Deploy the artifact to a staging environment.'
-                echo 'Tool: Ansible / Docker Compose'
+                echo 'Task: Run integration tests on the staging environment to ensure the application functions as expected in a production-like environment.'
+                echo 'Tool: Selenium'
             }
         }
-        stage('Stage 7: Report and Notify') {
+        stage('Stage 7: Deploy to Production') {
             steps {
-                echo 'Task: Report build outcome and notify the team.'
-                echo 'Tool: Extended Email Notification / Slack'
+                echo 'Task: Deploy the application to a production server.'
+                echo 'Tool: AWS EC2 instance (via SSH/SCP)'
             }
         }
     }
